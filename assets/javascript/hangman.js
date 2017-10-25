@@ -55,7 +55,7 @@ if (cpu.indexOf(char) !== -1 &&
 
 correct.push(char);
 player.push(char);	
-document.getElementById("current").textContent = correct.join("");
+document.getElementById("current").textContent = " " + correct.join(" ");
 document.getElementById("sofar").textContent = " " + player.join(" ");
 
 document.getElementById("left").textContent = " " + gl;
