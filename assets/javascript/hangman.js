@@ -1,4 +1,4 @@
-var word = ["jaws", "titanic", "shrek", "gladiator", "watchmen", 
+var movie = ["jaws", "titanic", "shrek", "gladiator", "watchmen", 
 "inception", "aliens"];
 // databse of words, movies
 var letter = "abcdefghijklmnopqrstuvwxyz";
@@ -7,7 +7,7 @@ var choices = letter.split("");
 // possible choices
 
 
-var cpu = word[Math.floor(Math.random() * 7)];
+var cpu = movie[Math.floor(Math.random() * 7)];
 var player = [];
 var cpusplit = cpu.split("")
 var char = "";
@@ -21,7 +21,7 @@ var youwin = "You Won!";
 
 function cpufunc(){
 
-word[Math.floor(Math.random() * 7)]
+movie[Math.floor(Math.random() * 7)]
 
 }
 
@@ -104,24 +104,33 @@ document.getElementById("left").textContent = " " + gl;
 else if (gl === 0) {
 
 	document.getElementById("start").innerHTML = end;
-	cpu = word[Math.floor(Math.random() * 7)];
+	cpu = movie[Math.floor(Math.random() * 7)];
 	gl = 15;
 	player = [];
 	correct = [];
+	document.getElementById("current").textContent = " " + correct.join(" ");
+	document.getElementById("sofar").textContent = " " + player.join(" ");
+
 
 }
 
-// if (correct[i] === cpusplit[i]) {
 
-// 	wins++
-// 	document.getElementById("wins").textContent = " " + wins;
-// 	document.getElementById("start").innerHTML = youwin;
-// 	cpu = word[Math.floor(Math.random() * 7)];
-// 	gl = 15;
-// 	player = [];
-// 	correct= [];
 
-// }
+
+ // if (correct([i]) === cpu.every([i])) {
+
+ // 	wins++
+ // 	document.getElementById("wins").textContent = " " + wins;
+ // 	document.getElementById("start").innerHTML = youwin;
+ // 	cpu = word[Math.floor(Math.random() * 7)];
+ // 	gl = 15;
+ // 	player = [];
+ // 	correct= [];
+ // 	document.getElementById("current").textContent = " " + correct.join(" ");
+	// document.getElementById("sofar").textContent = " " + player.join(" ");
+
+
+ // }
 
 
 		
