@@ -9,23 +9,19 @@ var choices = letter.split("");
 
 var cpu = movie[Math.floor(Math.random() * 7)];
 var player = [];
-var cpusplit = cpu.split("")
+var cpusplit = cpu.split("");
 var char = "";
 var wins = 0;
 var losses = 0;
 var gl = 15;
 var word = "";
 var end = "Game Over!";
-var correct = [];
+var correct = new Array(cpu.length).fill("_");
 var youwin = "You Won!";
+var audio = new Audio("assets/images/win.mp3");
+var audio2 = new Audio("assets/images/loss.mp3");
 
-function cpufunc(){
 
-movie[Math.floor(Math.random() * 7)]
-
-}
-
-cpufunc();
 
 for (var i = 0; i < cpu.length; i++) {
 
@@ -36,6 +32,31 @@ var space = " _ ";
 
 }
 
+
+
+function answer(){
+
+ for (var i = 0; i < cpu.length; i++) {
+	 	 	
+	if (correct[i] !== cpusplit[i]){
+
+ 	return false;
+ }
+
+else {}
+
+
+ return true;
+	
+
+}
+
+
+
+}
+
+
+
 document.getElementById("current").textContent = word;
 
 
@@ -44,28 +65,40 @@ document.onkeyup = function(event) {
 	char = event.key;
 	start = "Game Started!"
 	document.getElementById("start").innerHTML = start;
-
-// function store(guess) {
-
-// 	if (cpu.indexOf(guess) !== -1) {
-
-// 	for (var i = 0; i < cpu.length; i++) {
-		
-// 		if (cpu.charAt(i) === guess) {
-// 			correct[i]=guess;
-// 		}
-// }
-// }
-
-
-// 	}
-
-// store(char);
-// console.log(correct);
+	answer();
+	
 	
 
 
 
+function charcorr(event){
+
+	if (cpu.indexOf(event) !== -1) {
+
+		for (var i = 0; i < cpu.length; i++) {
+		
+
+		if (event === cpu.charAt([i])) {
+
+			
+			
+			correct[i]=cpu[i];
+
+		
+
+
+		}	
+
+	
+
+		}
+
+
+	}
+
+
+}
+	
 
 for (var i = 0; i < cpu.length; i++) {
 
@@ -75,15 +108,13 @@ if (cpu.indexOf(char) !== -1 &&
 	  choices.indexOf(char) !== -1){
 
 
-		//function charats (){
-	//document.getElementById("current").textContent = " " + correct.join(" ");
-	//correct(cpu.charAt(char));
 
-//}
+		
+	
+charcorr(char);
 
-correct.push(char);
-player.push(char);	
-document.getElementById("current").textContent = " " + correct.join(" ");
+console.log(correct);
+document.getElementById("current").textContent = " " + correct;
 document.getElementById("sofar").textContent = " " + player.join(" ");
 document.getElementById("current").textContent = " " + correct.join(" ");
 document.getElementById("left").textContent = " " + gl;
@@ -104,10 +135,13 @@ document.getElementById("left").textContent = " " + gl;
 else if (gl === 0) {
 
 	document.getElementById("start").innerHTML = end;
+	losses++
+    document.getElementById("losses").textContent = " " + losses;
 	cpu = movie[Math.floor(Math.random() * 7)];
 	gl = 15;
 	player = [];
-	correct = [];
+	correct = new Array(cpu.length).fill("_");
+	audio2.play();
 	document.getElementById("current").textContent = " " + correct.join(" ");
 	document.getElementById("sofar").textContent = " " + player.join(" ");
 
@@ -115,31 +149,26 @@ else if (gl === 0) {
 }
 
 
+else if (answer())
+
+  {
+     	wins++
+       	document.getElementById("wins").textContent = " " + wins;
+       	document.getElementById("start").innerHTML = youwin;
+       	cpu = movie[Math.floor(Math.random() * 7)];
+      	gl = 15;
+       	player = [];
+       	correct = new Array(cpu.length).fill("_");
+        document.getElementById("current").textContent = " " + correct.join(" ");
+     	document.getElementById("sofar").textContent = " " + player.join(" ");
+     	audio.play();
+     	}
 
 
- // if (correct([i]) === cpu.every([i])) {
-
- // 	wins++
- // 	document.getElementById("wins").textContent = " " + wins;
- // 	document.getElementById("start").innerHTML = youwin;
- // 	cpu = word[Math.floor(Math.random() * 7)];
- // 	gl = 15;
- // 	player = [];
- // 	correct= [];
- // 	document.getElementById("current").textContent = " " + correct.join(" ");
-	// document.getElementById("sofar").textContent = " " + player.join(" ");
-
-
- // }
+   
 
 
 		
-// 	if (wordsplit.indexOf(char) === -1
-// 		//checks if char (key) is in index of word
-// 		&& player.indexOf(char) === -1 
-// 		//checks if char is in index of already used chars
-// 		&& choices.indexOf(char) !== -1) {
-// 		//checks if char is in index of possible choices (alphabet)
 
 
 
@@ -161,7 +190,7 @@ else if (gl === 0) {
 
 	console.log(cpu);
 	//console.log(char);
-	//console.log(correct);
+	console.log(correct);
 	//console.log(cpusplit);
 
 
