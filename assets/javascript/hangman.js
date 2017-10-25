@@ -9,7 +9,7 @@ var choices = letter.split("");
 
 var cpu = word[Math.floor(Math.random() * 7)];
 var player = [];
-
+var cpusplit = cpu.split("")
 var char = "";
 var wins = 0;
 var losses = 0;
@@ -45,7 +45,27 @@ document.onkeyup = function(event) {
 	start = "Game Started!"
 	document.getElementById("start").innerHTML = start;
 
+// function store(guess) {
+
+// 	if (cpu.indexOf(guess) !== -1) {
+
+// 	for (var i = 0; i < cpu.length; i++) {
+		
+// 		if (cpu.charAt(i) === guess) {
+// 			correct[i]=guess;
+// 		}
+// }
+// }
+
+
+// 	}
+
+// store(char);
+// console.log(correct);
 	
+
+
+
 
 for (var i = 0; i < cpu.length; i++) {
 
@@ -81,25 +101,27 @@ document.getElementById("left").textContent = " " + gl;
 
 }
 
-if (gl === 0) {
+else if (gl === 0) {
 
 	document.getElementById("start").innerHTML = end;
-	cpufunc();
-	gl = 15
-	player = [];
-
-}
-
-if (correct === cpu.split("")) {
-
-	wins++
-	document.getElementById("wins").textContent = " " + wins;
-	document.getElementById("start").innerHTML = youwin;
-	cpufunc();
+	cpu = word[Math.floor(Math.random() * 7)];
 	gl = 15;
 	player = [];
+	correct = [];
 
 }
+
+// if (correct[i] === cpusplit[i]) {
+
+// 	wins++
+// 	document.getElementById("wins").textContent = " " + wins;
+// 	document.getElementById("start").innerHTML = youwin;
+// 	cpu = word[Math.floor(Math.random() * 7)];
+// 	gl = 15;
+// 	player = [];
+// 	correct= [];
+
+// }
 
 
 		
@@ -129,8 +151,8 @@ if (correct === cpu.split("")) {
 
 
 	console.log(cpu);
-	console.log(char);
-	console.log(correct);
-	console.log(cpu.split(""));
+	//console.log(char);
+	//console.log(correct);
+	//console.log(cpusplit);
 
 
