@@ -16,7 +16,8 @@ var losses = 0;
 var gl = 15;
 var word = "";
 var end = "Game Over!";
-var correct = []
+var correct = [];
+var youwin = "You Won!";
 
 function cpufunc(){
 
@@ -53,11 +54,18 @@ if (cpu.indexOf(char) !== -1 &&
 	player.indexOf(char) === -1 && 
 	  choices.indexOf(char) !== -1){
 
+
+		//function charats (){
+	//document.getElementById("current").textContent = " " + correct.join(" ");
+	//correct(cpu.charAt(char));
+
+//}
+
 correct.push(char);
 player.push(char);	
 document.getElementById("current").textContent = " " + correct.join(" ");
 document.getElementById("sofar").textContent = " " + player.join(" ");
-
+document.getElementById("current").textContent = " " + correct.join(" ");
 document.getElementById("left").textContent = " " + gl;
 
 }
@@ -82,10 +90,11 @@ if (gl === 0) {
 
 }
 
-if (correct === cpu) {
+if (correct === cpu.split("")) {
 
 	wins++
 	document.getElementById("wins").textContent = " " + wins;
+	document.getElementById("start").innerHTML = youwin;
 	cpufunc();
 	gl = 15;
 	player = [];
@@ -102,11 +111,6 @@ if (correct === cpu) {
 // 		//checks if char is in index of possible choices (alphabet)
 
 
-// 	player.push(char);	
-// 	document.getElementById("current").textContent = char;
-// 	gl = gl -1;
-// 	document.getElementById("left").textContent = " " + gl;
-// 	document.getElementById("sofar").textContent = " " + player + " ";
 
 	
 	
@@ -114,28 +118,9 @@ if (correct === cpu) {
 
 }
 
-// else {
 
-// 	gl = gl -1;
-	
-// 	document.getElementById("left").textContent = " " + gl;
-// 	document.getElementById("sofar").textContent = " " + player + " ";
-// }
 
 };
-
-
-// if (cpu.length) {
-
-// cpufunc();
-
-// }
-
-// else {
-
-// cpufunc();
-
-// }
 
 
 
@@ -145,4 +130,7 @@ if (correct === cpu) {
 
 	console.log(cpu);
 	console.log(char);
-	console.log(cpu.indexOf(char));
+	console.log(correct);
+	console.log(cpu.split(""));
+
+
