@@ -9,13 +9,14 @@ var choices = letter.split("");
 
 var cpu = word[Math.floor(Math.random() * 7)];
 var player = [];
+
 var char = "";
 var wins = 0;
 var losses = 0;
 var gl = 15;
 var word = "";
 var end = "Game Over!";
-
+var correct = []
 
 function cpufunc(){
 
@@ -48,22 +49,25 @@ document.onkeyup = function(event) {
 for (var i = 0; i < cpu.length; i++) {
 
 
-if (cpu.indexOf(char) !== -1 && player.indexOf(char) === -1 && 
+if (cpu.indexOf(char) !== -1 && 
+	player.indexOf(char) === -1 && 
 	  choices.indexOf(char) !== -1){
 
+correct.push(char);
 player.push(char);	
-document.getElementById("current").textContent = char;
-document.getElementById("sofar").textContent = " " + player + " ";
-gl = gl -1;
+document.getElementById("current").textContent = correct.join("");
+document.getElementById("sofar").textContent = " " + player.join(" ");
+
 document.getElementById("left").textContent = " " + gl;
 
 }
 
-else if (player.indexOf(char) === -1 && 
+else if (
+	player.indexOf(char) === -1 && 
 	  choices.indexOf(char) !== -1) {
 
 player.push(char);
-document.getElementById("sofar").textContent = " " + player + " ";
+document.getElementById("sofar").textContent = " " + player.join(" ");
 gl = gl -1;
 document.getElementById("left").textContent = " " + gl;
 
@@ -74,6 +78,16 @@ if (gl === 0) {
 	document.getElementById("start").innerHTML = end;
 	cpufunc();
 	gl = 15
+	player = [];
+
+}
+
+if (correct === cpu) {
+
+	wins++
+	document.getElementById("wins").textContent = " " + wins;
+	cpufunc();
+	gl = 15;
 	player = [];
 
 }
