@@ -1,0 +1,32 @@
+body {
+
+
+	background-image: url("../images/theatre.jpg");
+	
+
+}
+
+.jumbotron {
+	color: dodgerblue;
+	text-align: center;
+	background-color: lemonchiffon;
+	border: 2px solid gray;
+	line-height: 30px;
+
+}
+
+#name {
+font-family: 'Russo One', sans-serif;
+font-size: 30px;
+
+}
+
+h1 {
+
+	font-family: 'Russo One', sans-serif;
+}
+
+p {
+
+	font-family: 'Orbitron', sans-serif;
+}
