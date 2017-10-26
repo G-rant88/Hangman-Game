@@ -13,7 +13,7 @@ var cpusplit = cpu.split("");
 var char = "";
 var wins = 0;
 var losses = 0;
-var gl = 15;
+var gl = 10;
 var word = "";
 var end = "Game Over!";
 var correct = new Array(cpu.length).fill("_");
@@ -139,7 +139,7 @@ else if (gl === 0) {
     document.getElementById("losses").textContent = " " + losses;
 	cpu = movie[Math.floor(Math.random() * 7)];
 	cpusplit = cpu.split("");
-	gl = 15;
+	gl = 10;
 	player = [];
 	correct = new Array(cpu.length).fill("_");
 	audio2.play();
@@ -158,7 +158,7 @@ else if (answer())
        	document.getElementById("start").innerHTML = youwin;
        	cpu = movie[Math.floor(Math.random() * 7)];
        	cpusplit = cpu.split("");
-      	gl = 15;
+      	gl = 10;
        	player = [];
        	correct = new Array(cpu.length).fill("_");
         document.getElementById("current").textContent = " " + correct.join(" ");
