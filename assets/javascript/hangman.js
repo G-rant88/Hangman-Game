@@ -25,15 +25,12 @@ var audio2 = new Audio("assets/images/loss.mp3");
 
 for (var i = 0; i < cpu.length; i++) {
 
-var space = " _ ";
+	var space = " _ ";
 
 	word = space + word;
 
 
 }
-
-
-
 
 
 function charcorr(event){
@@ -43,25 +40,15 @@ function charcorr(event){
 		for (var i = 0; i < cpu.length; i++) {
 		
 
-		if (event === cpu.charAt([i])) {
+			if (event === cpu.charAt([i])) {
 
 			
 			
 			correct[i]=cpu[i];
 
-		
-
-
 		}	
-
-	
-
 		}
-
-
 	}
-
-
 }
 
 
@@ -75,8 +62,7 @@ document.onkeyup = function(event) {
 	document.getElementById("start").innerHTML = start;
 	
 	
-	
-		
+
 function answer(){
 
  for (var i = 0; i < cpu.length; i++) {
@@ -86,12 +72,6 @@ function answer(){
  	return false;
  }
 
-
-
-
- 
-	
-
 }
 
 return true;
@@ -99,39 +79,14 @@ return true;
 }
 
 
-
-	
-
 for (var i = 0; i < cpu.length; i++) {
 
 
 if (cpu.indexOf(char) !== -1 && 
 	player.indexOf(char) === -1 && 
 	  choices.indexOf(char) !== -1){
-
-
-
-
-
-
-
-
-
-
-//answer()
-
 	
 charcorr(char);
-
-
-
-
-
-
-
-
-
-
 console.log(correct);
 document.getElementById("current").textContent = " " + correct;
 document.getElementById("sofar").textContent = " " + player.join(" ");
@@ -185,29 +140,9 @@ else if (answer())
      	document.getElementById("sofar").textContent = " " + player.join(" ");
      	audio.play();
      	}
-
-
-   
-
-
-		
-
-
-
-	
-	
-
-
 }
 
-
-
 };
-
-
-
-
-
 
 
 	console.log(cpu);
