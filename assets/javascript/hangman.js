@@ -1,5 +1,5 @@
 var movie = ["jaws", "titanic", "shrek", "gladiator", "watchmen", 
-"inception", "aliens"];
+"inception", "aliens", "scarface", "rocky", "predator"];
 // databse of words, movies
 var letter = "abcdefghijklmnopqrstuvwxyz";
 // databse of letters
@@ -7,7 +7,7 @@ var choices = letter.split("");
 // possible choices
 
 
-var cpu = movie[Math.floor(Math.random() * 7)];
+var cpu = movie[Math.floor(Math.random() * movie.length)];
 var player = [];
 var cpusplit = cpu.split("");
 var char = "";
@@ -34,26 +34,6 @@ var space = " _ ";
 
 
 
-function answer(){
-
- for (var i = 0; i < cpu.length; i++) {
-	 	 	
-	if (correct[i] !== cpusplit[i]){
-
- 	return false;
- }
-
-else {}
-
-
- return true;
-	
-
-}
-
-
-
-}
 
 
 function charcorr(event){
@@ -96,7 +76,27 @@ document.onkeyup = function(event) {
 	
 	
 	
+		
+function answer(){
 
+ for (var i = 0; i < cpu.length; i++) {
+	 	 	
+	if (correct[i] !== cpusplit[i]){
+
+ 	return false;
+ }
+
+else {}
+
+
+ return true;
+	
+
+}
+
+
+
+}
 
 
 
@@ -111,10 +111,27 @@ if (cpu.indexOf(char) !== -1 &&
 
 
 
-		
+
+
+
+
+
+
+
+//answer()
+
 	
 charcorr(char);
-answer()
+
+
+
+
+
+
+
+
+
+
 console.log(correct);
 document.getElementById("current").textContent = " " + correct;
 document.getElementById("sofar").textContent = " " + player.join(" ");
@@ -140,7 +157,7 @@ else if (gl === 0) {
 	document.getElementById("start").innerHTML = end;
 	losses++
     document.getElementById("losses").textContent = " " + losses;
-	cpu = movie[Math.floor(Math.random() * 7)];
+	cpu = movie[Math.floor(Math.random() * movie.length)];
 	cpusplit = cpu.split("");
 	gl = 10;
 	player = [];
@@ -153,13 +170,13 @@ else if (gl === 0) {
 }
 
 
-else if (answer() === true)
+else if (answer())
 
   {
      	wins++
        	document.getElementById("wins").textContent = " " + wins;
        	document.getElementById("start").innerHTML = youwin;
-       	cpu = movie[Math.floor(Math.random() * 7)];
+       	cpu = movie[Math.floor(Math.random() * movie.length)];
        	cpusplit = cpu.split("");
       	gl = 10;
        	player = [];
