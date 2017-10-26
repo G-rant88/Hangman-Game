@@ -34,21 +34,6 @@ var space = " _ ";
 
 
 
-
-
-
-
-document.getElementById("current").textContent = word;
-
-
-document.onkeyup = function(event) {
-
-	char = event.key;
-	start = "Game Started!"
-	document.getElementById("start").innerHTML = start;
-	answer();
-	
-	
 function answer(){
 
  for (var i = 0; i < cpu.length; i++) {
@@ -98,6 +83,23 @@ function charcorr(event){
 
 
 }
+
+
+document.getElementById("current").textContent = word;
+
+
+document.onkeyup = function(event) {
+
+	char = event.key;
+	start = "Game Started!"
+	document.getElementById("start").innerHTML = start;
+	
+	
+	
+
+
+
+
 	
 
 for (var i = 0; i < cpu.length; i++) {
@@ -112,7 +114,7 @@ if (cpu.indexOf(char) !== -1 &&
 		
 	
 charcorr(char);
-
+answer()
 console.log(correct);
 document.getElementById("current").textContent = " " + correct;
 document.getElementById("sofar").textContent = " " + player.join(" ");
@@ -126,6 +128,7 @@ else if (
 	  choices.indexOf(char) !== -1) {
 
 player.push(char);
+
 document.getElementById("sofar").textContent = " " + player.join(" ");
 gl = gl -1;
 document.getElementById("left").textContent = " " + gl;
@@ -150,7 +153,7 @@ else if (gl === 0) {
 }
 
 
-else if (answer())
+else if (answer() === true)
 
   {
      	wins++
@@ -193,6 +196,6 @@ else if (answer())
 	console.log(cpu);
 	//console.log(char);
 	console.log(correct);
-	//console.log(cpusplit);
+	console.log(cpusplit);
 
 
