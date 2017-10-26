@@ -34,6 +34,21 @@ var space = " _ ";
 
 
 
+
+
+
+
+document.getElementById("current").textContent = word;
+
+
+document.onkeyup = function(event) {
+
+	char = event.key;
+	start = "Game Started!"
+	document.getElementById("start").innerHTML = start;
+	answer();
+	
+	
 function answer(){
 
  for (var i = 0; i < cpu.length; i++) {
@@ -54,21 +69,6 @@ else {}
 
 
 }
-
-
-
-document.getElementById("current").textContent = word;
-
-
-document.onkeyup = function(event) {
-
-	char = event.key;
-	start = "Game Started!"
-	document.getElementById("start").innerHTML = start;
-	answer();
-	
-	
-
 
 
 function charcorr(event){
@@ -138,6 +138,7 @@ else if (gl === 0) {
 	losses++
     document.getElementById("losses").textContent = " " + losses;
 	cpu = movie[Math.floor(Math.random() * 7)];
+	cpusplit = cpu.split("");
 	gl = 15;
 	player = [];
 	correct = new Array(cpu.length).fill("_");
@@ -156,6 +157,7 @@ else if (answer())
        	document.getElementById("wins").textContent = " " + wins;
        	document.getElementById("start").innerHTML = youwin;
        	cpu = movie[Math.floor(Math.random() * 7)];
+       	cpusplit = cpu.split("");
       	gl = 15;
        	player = [];
        	correct = new Array(cpu.length).fill("_");
