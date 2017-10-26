@@ -1,5 +1,6 @@
 var movie = ["jaws", "titanic", "shrek", "gladiator", "watchmen", 
-"inception", "aliens", "scarface", "rocky", "predator"];
+"inception", "aliens", "scarface", "rocky", "predator", "goodfellas", "memento", 
+"juno", "taken", "fargo", "zoolander", "avatar"];
 // databse of words, movies
 var letter = "abcdefghijklmnopqrstuvwxyz";
 // databse of letters
