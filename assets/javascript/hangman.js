@@ -24,6 +24,7 @@ var audio2 = new Audio("assets/images/loss.mp3");
 
 
 
+
 for (var i = 0; i < cpu.length; i++) {
 
 	var space = " _ ";
@@ -61,9 +62,25 @@ document.onkeyup = function(event) {
 	char = event.key;
 	start = "Game Started!"
 	document.getElementById("start").innerHTML = start;
-	document.getElementById("wordis").innerHTML = "";
+	document.getElementById("wordis").innerHTML = "&nbsp &nbsp &nbsp &nbsp";
 	
 	
+ if (
+	player.indexOf(char) === -1 && 
+	  choices.indexOf(char) !== -1 && 
+	  gl !== 0 &&
+	  cpu.indexOf(char) === -1) {
+
+player.push(char);
+document.getElementById("sofar").textContent = " " + player.join(" ");
+gl--;
+document.getElementById("left").textContent = " " + gl;
+
+}
+
+
+
+
 
 charcorr(char);
 
@@ -87,66 +104,59 @@ return true;
 for (var i = 0; i < cpu.length; i++) {
 
 
-if (cpu.indexOf(char) !== -1 && 
+
+
+
+ if (cpu.indexOf(char) !== -1 && 
 	player.indexOf(char) === -1 && 
 	  choices.indexOf(char) !== -1){
 	
 
 console.log(correct);
 document.getElementById("current").textContent = " " + correct;
-document.getElementById("sofar").textContent = " " + player.join(" ");
+//document.getElementById("sofar").textContent = " " + player.join(" ");
 document.getElementById("current").textContent = " " + correct.join(" ");
-document.getElementById("left").textContent = " " + gl;
+//document.getElementById("left").textContent = " " + gl;
 
 if (answer()){
-	player.push(char);
+		
      	wins++
        	document.getElementById("wins").textContent = " " + wins;
        	document.getElementById("start").innerHTML = youwin;
        	document.getElementById("wordis").innerHTML = "The movie was: " + cpu;
+       	player = [];
+       	document.getElementById("sofar").textContent = " " + player.join(" ");
        	cpu = movie[Math.floor(Math.random() * movie.length)];
        	cpusplit = cpu.split("");
        	correct = new Array(cpu.length).fill("_");
         document.getElementById("current").textContent = " " + correct.join(" ");
-     	document.getElementById("sofar").textContent = " " + player.join(" ");
      	audio.play();
      	gl = 10;
-     	player = [];
+     	document.getElementById("left").textContent = " " + gl;
+     	
+     	
 
    }
 
 }
 
 
-else if (
-	player.indexOf(char) === -1 && 
-	  choices.indexOf(char) !== -1 && 
-	  gl !== 0 &&
-	  cpu.indexOf(char) == -1) {
-
-player.push(char);
-
-document.getElementById("sofar").textContent = " " + player.join(" ");
-gl = gl -1;
-document.getElementById("left").textContent = " " + gl;
-
-}
-
-
-
 else if (gl === 0) {
+
 	
 	document.getElementById("start").innerHTML = end;
 	losses++
     document.getElementById("losses").textContent = " " + losses;
 	audio2.play();
 	player = [];
+	document.getElementById("sofar").textContent = " " + player.join(" ");
 	cpu = movie[Math.floor(Math.random() * movie.length)];
 	cpusplit = cpu.split("");
 	correct = new Array(cpu.length).fill("_");
 	document.getElementById("current").textContent = " " + correct.join(" ");
 	document.getElementById("wordis").innerHTML = "Guess a letter to try again!"
 	gl = 10;
+	document.getElementById("left").textContent = " " + gl;
 	
 }
 
