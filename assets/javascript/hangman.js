@@ -61,8 +61,12 @@ document.onkeyup = function(event) {
 	char = event.key;
 	start = "Game Started!"
 	document.getElementById("start").innerHTML = start;
+	document.getElementById("wordis").innerHTML = "";
 	
 	
+
+charcorr(char);
+
 
 function answer(){
 
@@ -87,18 +91,38 @@ if (cpu.indexOf(char) !== -1 &&
 	player.indexOf(char) === -1 && 
 	  choices.indexOf(char) !== -1){
 	
-charcorr(char);
+
 console.log(correct);
 document.getElementById("current").textContent = " " + correct;
 document.getElementById("sofar").textContent = " " + player.join(" ");
 document.getElementById("current").textContent = " " + correct.join(" ");
 document.getElementById("left").textContent = " " + gl;
 
+if (answer()){
+	player.push(char);
+     	wins++
+       	document.getElementById("wins").textContent = " " + wins;
+       	document.getElementById("start").innerHTML = youwin;
+       	document.getElementById("wordis").innerHTML = "The movie was: " + cpu;
+       	cpu = movie[Math.floor(Math.random() * movie.length)];
+       	cpusplit = cpu.split("");
+       	correct = new Array(cpu.length).fill("_");
+        document.getElementById("current").textContent = " " + correct.join(" ");
+     	document.getElementById("sofar").textContent = " " + player.join(" ");
+     	audio.play();
+     	gl = 10;
+     	player = [];
+
+   }
+
 }
+
 
 else if (
 	player.indexOf(char) === -1 && 
-	  choices.indexOf(char) !== -1) {
+	  choices.indexOf(char) !== -1 && 
+	  gl !== 0 &&
+	  cpu.indexOf(char) == -1) {
 
 player.push(char);
 
@@ -108,40 +132,30 @@ document.getElementById("left").textContent = " " + gl;
 
 }
 
-else if (gl === 0) {
 
+
+else if (gl === 0) {
+	
 	document.getElementById("start").innerHTML = end;
 	losses++
     document.getElementById("losses").textContent = " " + losses;
+	audio2.play();
+	player = [];
 	cpu = movie[Math.floor(Math.random() * movie.length)];
 	cpusplit = cpu.split("");
-	gl = 10;
-	player = [];
 	correct = new Array(cpu.length).fill("_");
-	audio2.play();
 	document.getElementById("current").textContent = " " + correct.join(" ");
-	document.getElementById("sofar").textContent = " " + player.join(" ");
+	document.getElementById("wordis").innerHTML = "Guess a letter to try again!"
+	gl = 10;
+	
+}
+
+
+
 
 
 }
 
-
-else if (answer())
-
-  {
-     	wins++
-       	document.getElementById("wins").textContent = " " + wins;
-       	document.getElementById("start").innerHTML = youwin;
-       	cpu = movie[Math.floor(Math.random() * movie.length)];
-       	cpusplit = cpu.split("");
-      	gl = 10;
-       	player = [];
-       	correct = new Array(cpu.length).fill("_");
-        document.getElementById("current").textContent = " " + correct.join(" ");
-     	document.getElementById("sofar").textContent = " " + player.join(" ");
-     	audio.play();
-     	}
-}
 
 };
 
