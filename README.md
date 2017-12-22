@@ -9,3 +9,6 @@
   <li>Keeps track of your wins and losses</li>
   <li>Allows you to play again after a win or loss</li>
   </ul>
+
+<img src="https://media.giphy.com/media/3ohjV8aZMVyeNLMHv2/giphy.gif" alt="gif">
+full video demo: (https://www.youtube.com/watch?v=nz4AuuNU1rk)
